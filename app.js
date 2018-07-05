@@ -20,6 +20,9 @@ app.engine('jsx', reactEngine);
 const setupRoutesForTheExpressServer = require('./routes');
 setupRoutesForTheExpressServer(app);
 
+const ajaxSetUp = require('./ajax_index');
+ajaxSetUp(app, db);
+
 
 const server = app.listen(3000, ()=>console.log('~~~ Tuning in to the waves of 3000 ~~~'))
 
