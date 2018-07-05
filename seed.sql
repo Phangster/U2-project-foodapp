@@ -1,0 +1,5 @@
+-- INSERT INTO items (name, num, price) VALUES ('broccoli', 001, 2);
+-- INSERT INTO items (name, num, price) VALUES ('chicken', 002, 6);
+-- INSERT INTO items (name, num, price) VALUES ('salmon', 003, 9);
+-- INSERT INTO items (name, num, price) VALUES ('beef', 004, 9);
+-- INSERT INTO items (name, num, price) VALUES ('meatballs', 005, 3);
