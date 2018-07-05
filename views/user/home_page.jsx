@@ -19,8 +19,10 @@ class Home extends React.Component {
 	                  				<p>Name: {item.name}</p>
 	                  				<p>Item number: {item.num}</p>
                     				<p>Price: ${item.price}</p>
-                    				<form action ="/user/additem" method='POST'>
-                    					<input name='id' type="hidden" value = {item.id}/>
+                    				<form 
+                    				method='POST'
+                    				name='id'
+                    				action ='/user/additem'>
 				    					<button>Add</button>
 			    					</form>
 	 				        	</li>
