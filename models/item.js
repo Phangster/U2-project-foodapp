@@ -1,7 +1,7 @@
 const db = require('../db');
 
 function viewCart(id, callback){
-	let queryString = 'SELECT * FROM items'
+	let queryString = 'SELECT * FROM items INNER JOIN users_items ON users_items.items_id = items.id INNER JOIN users ON users_items.users_id = users.id'
 	db.query(queryString, (error, result)=>{
 		callback(error, result.rows)
 	});

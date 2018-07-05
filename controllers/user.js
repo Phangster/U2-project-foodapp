@@ -65,7 +65,7 @@ function addingToCart(req, res){
 		if (error) {
 		    res.send('deb error: ' + error.message);
 		}else{
-			res.redirect('/user')
+			res.render('/user')
 		}
 	}
 	Item.addToCart(req.cookies['user_id'], req.body.id, callback)
@@ -77,7 +77,7 @@ function addingToCart(req, res){
 		    res.send('deb error: ' + error.message);
 		}else{
 			console.log(result.rows)
-			res.render('./item/mylistofitem', {addedItems: result.rows})
+			res.render('./item/mylistofitem', {addedItems: result})
 		}
 	}
 	Item.displayCart(req.cookies['users_id'], callback)
