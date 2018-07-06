@@ -17,8 +17,7 @@ function login(email, password, callback){
 			console.log(error);
 		}
 		if(sha256(password)==result.rows[0].password){
-			let name = result.rows[0].name;
-			callback(true, result.rows[0].id, name.toUpperCase());
+			callback(true, result.rows[0].id, result.rows[0]);
 		}else{
 			callback(false, null, null);
 	}
@@ -27,7 +26,7 @@ function login(email, password, callback){
 
 function find(id, callback) {
   db.query('SELECT * FROM users WHERE id = $1', [id], (error, result) => {
-    callback(result.rows[0]);
+    callback(error, result.rows[0]);
   })
 }
 module.exports = {

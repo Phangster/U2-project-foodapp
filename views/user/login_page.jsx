@@ -6,7 +6,7 @@ class Home extends React.Component {
     return (
       <LayoutContainer>
           <h4>Welcome to Home page</h4>
-          <form action ="/user/home" method='POST'>
+          <form action ="/home" method='POST'>
             <input name="email" type='text' placeholder='email'/>
             <input name="password" type='text' placeholder='password'/>
             <button name="submit" type='submit'>Login</button>

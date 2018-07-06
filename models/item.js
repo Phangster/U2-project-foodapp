@@ -1,7 +1,7 @@
 const db = require('../db');
 
-function viewCart(id, callback){
-	let queryString = 'SELECT * FROM items INNER JOIN users_items ON users_items.items_id = items.id INNER JOIN users ON users_items.users_id = users.id'
+function viewItems(callback){
+	let queryString = 'SELECT * FROM items'
 	db.query(queryString, (error, result)=>{
 		callback(error, result.rows)
 	});
@@ -19,9 +19,14 @@ function addToCart(users_id, items_id, callback){
 	})
 }
 
-function displayCart(users_id, callback){
-	let queryString = 'SELECT * FROM items INNER JOIN users_items ON users_items.items_id = items.id INNER JOIN users ON users_items.users_id = users.id WHERE users.id= $1';
-	let values = [users_id];
+function displayCart(user_id, callback){
+	let queryString = `SELECT * FROM items
+						JOIN users_items
+						ON users_items.items_id = items.id
+						JOIN users
+						ON users_items.users_id = users.id
+						WHERE users.id= $1`;
+	let values = [user_id];
 	db.query(queryString, values, (error, result)=>{
 		if (error) {
 			console.log(error.message);
@@ -33,7 +38,7 @@ function displayCart(users_id, callback){
 
 
 module.exports = {
-	viewCart,
+	viewItems,
 	displayCart,
 	addToCart,
 }
