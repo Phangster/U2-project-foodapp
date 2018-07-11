@@ -81,12 +81,7 @@ function addingToCart(req, res){
 				itemsInCart = parseInt(req.cookies['itemsInCart']) + 1;
 			}
 			res.cookie('itemsInCart', itemsInCart)
-			let content = {
-							counter: itemsInCart, 
-							user: req.cookies['name'], 
-							items: selectResult 
-						}
-			res.render('./item/category' + req.params.cat, content)
+			res.render('./item/category' + req.params.cat, {counter: itemsInCart, user: req.cookies['name'], cat: req.params.cat, items: selectResult})
 		}
 	}
 	Item.addToCart(req.cookies['user_id'], req.params.id, req.params.cat, callback)

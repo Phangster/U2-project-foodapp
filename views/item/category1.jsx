@@ -25,7 +25,7 @@ class sobaItemPage extends React.Component {
 
 			      <form className="nav navbar-header ml-auto animated slideInRight" action="/user/cart" method='GET'><span>{this.props.user}</span>
 					<button class="glyphicon glyphicon-shopping-cart"></button></form>
-					<div id='itemCount' style={circleAddToCart}></div>
+					<div id='itemCount' style={circleAddToCart}>{this.props.counter}</div>
 			  	</div>
 			</nav>
 

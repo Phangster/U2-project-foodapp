@@ -8,7 +8,7 @@ function viewItems(callback){
 }
 
 function addToCart(users_id, items_id, categories_id, callback){
-	let queryString = 'INSERT INTO users_items (users_id, items_id, categories_id) VALUES ($1, $2, $3)';
+	let queryString = 'INSERT INTO users_items (users_id, items_id, categories_id) VALUES ($1, $2, $3)'
 	let values = [users_id, items_id, categories_id];
 	db.query(queryString, values, (error, insertResult)=>{
 		if (error) {
@@ -22,7 +22,7 @@ function addToCart(users_id, items_id, categories_id, callback){
 					callback(error, insertResult.rows, selectResult.rows)
 				}
 			})
-		}	
+		}
 	})
 }
 
