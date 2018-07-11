@@ -1,8 +1,6 @@
-var itemCount = 0;
-document.querySelector('.add').addEventListener("click", ()=>{
-	itemCount ++;
-    document.getElementById('itemCount').innerText = itemCount;
-});
+// document.querySelector('.decrease').addEventListener("click", ()=>{
+    
+// });
 
 
 // $('.clear').click(function() {

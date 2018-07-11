@@ -4,14 +4,16 @@ var LayoutContainer = require('../layouts/main.jsx');
 class sobaItemPage extends React.Component {
 	render(){
 		const circleAddToCart = {
-			width:'15px', 
-			height:'15px', 
+			width:'18px', 
+			height:'18px', 
 			background:'red', 
 			borderRadius:'50%',
 			position:'absolute',
 			marginRight:'20%',
-			top: '13%',
-    		left: '93%'
+			top: '18%',
+	    	left: '93%',
+	    	color: 'white',
+	    	fontSize: '12px'
 		}
 
 		return (
@@ -19,13 +21,13 @@ class sobaItemPage extends React.Component {
 			<nav className="navbar navbar-default navbar-fixed-top" style={{background:'#b7eba0'}}>
 			  <div className="container-fluid">
 			      <form className="nav navbar-header mr-auto" action='/category' method=
-			      'POST'><button className="glyphicon glyphicon-menu-left"><span style={{visibility: 'hidden'}}>|</span></button></form>
+			      'POST'><button className="glyphicon glyphicon-menu-left"><span style={{visibility: 'hidden'}}>**</span></button></form>
 
 			      <a className="nav navbar-header text-center animated slideInRight" style={{fontSize:'20px'}}>Soba</a>
 
 			      <form className="nav navbar-header ml-auto animated slideInRight" action="/user/cart" method='GET'><span>{this.props.user}</span>
 					<button class="glyphicon glyphicon-shopping-cart"></button></form>
-					<div id='itemCount' style={circleAddToCart}>{this.props.counter}</div>
+					<div id='itemCount' style={circleAddToCart} class='text-center'>{this.props.counter}</div>
 			  	</div>
 			</nav>
 

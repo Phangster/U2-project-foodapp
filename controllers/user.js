@@ -77,17 +77,18 @@ function addingToCart(req, res){
 			var itemsInCart;
 			if( req.cookies['itemsInCart'] == undefined ){
 				itemsInCart = 1;
+
 			}else{
 				itemsInCart = parseInt(req.cookies['itemsInCart']) + 1;
 			}
-			res.cookie('itemsInCart', itemsInCart)
-			res.render('./item/category' + req.params.cat, {counter: itemsInCart, user: req.cookies['name'], cat: req.params.cat, items: selectResult})
+			res.cookie('itemsInCart', itemsInCart);
+			res.render('./item/category' + req.params.cat, {counter: itemsInCart, user: req.cookies['name'], cat: req.params.cat, items: selectResult});
 		}
 	}
 	Item.addToCart(req.cookies['user_id'], req.params.id, req.params.cat, callback)
 }
 
- function displayToCart(req, res){
+function displayToCart(req, res){
 
  	function callback(error, result){
  	

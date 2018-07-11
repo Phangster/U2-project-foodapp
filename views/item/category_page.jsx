@@ -15,16 +15,18 @@ class categories extends React.Component {
 	render(){
 		return(
 			<LayoutContainer>
-			<nav class="navbar navbar-default navbar-fixed-top" style={{background:'#b7eba0'}}>
-			  <div class="container-fluid">
-			      <form class="nav navbar-header mr-auto" action='' method=
-			      'GET'><span class="glyphicon glyphicon-menu-hamburger"><span style={{visibility: 'hidden'}}>|</span></span></form>
+			
+			<nav className="navbar navbar-default navbar-fixed-top" style={{background:'#b7eba0'}}>
+			  <div className="container-fluid"> 
+			      <form className="nav navbar-header mr-auto" action='' method=
+			      'GET'><span className="glyphicon glyphicon-menu-hamburger"><span style={{visibility: 'hidden'}}>***</span></span></form>
 
-			      <a class="nav navbar-header text-center animated slideInRight" style={{fontSize:'20px'}}>Menu</a>
+			      <a className="nav navbar-header animated slideInRight" style={{fontSize:'20px'}}>Menu</a>
 
-			      <form class="nav navbar-header ml-auto animated slideInRight" action="/user/cart" method='GET'><span>{this.props.user}</span><button type="submit" class="glyphicon glyphicon-shopping-cart counter"></button></form>
+			      <form className="nav navbar-header ml-auto animated slideInRight" action="/user/cart" method='GET'><span>{this.props.user}</span><button type="submit" className="glyphicon glyphicon-shopping-cart counter"></button></form>
 			  </div>
 			</nav>
+
 
 			<div style={{marginTop:'35px'}}>
 				<ul style={{listStyle:'none', display:'inline'}}>
@@ -34,7 +36,7 @@ class categories extends React.Component {
 						method='GET'
 						action={'/category/' + cat.id}>
 							<div class="col">
-								<figure class="figure">
+								<figure className="figure">
 									<img src={cat.img} class="figure-img img-fluid rounded" style={{padding:'10px 25px 5px 25px', position:'relative'}}/>
 									<input type='submit' value={cat.categories} name='Soba' style={centeringTextInImage}/>
 								</figure>

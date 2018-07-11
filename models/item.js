@@ -14,8 +14,9 @@ function addToCart(users_id, items_id, categories_id, callback){
 		if (error) {
 			console.log(error.message);
 		}else{
-			let queryString = 'SELECT * FROM items';
-			db.query(queryString, (error, selectResult)=>{
+			let queryString = 'SELECT * FROM items WHERE categories_id = $1';
+			let values = [categories_id]
+			db.query(queryString, values, (error, selectResult)=>{
 				if (error) {
 					console.log(error.message);
 				}else{
