@@ -24,7 +24,7 @@ class listOfItems extends React.Component {
           <ul style={{listStyle:'none'}}>
             {this.props.items.map(item => (
                   <li>
-                  <div>
+                  <div style={{marginLeft: '-25%'}}>
                     <p style={{display:'inline-block'}}>{item.name}</p>
                     <i style={{fontSize:'20px', color:'red', padding:'5px'}}class="fas fa-minus-square"></i>
                     <p style={{display:'inline-block'}}>{item.quantity}</p>

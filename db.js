@@ -28,14 +28,14 @@ if( process.env.DATABASE_URL ){
 
   //otherwise we are on the local network
   var configs = {
-      user: 'drillaxholic',
+      user: 'akira',
       host: '127.0.0.1',
-      database: 'foodapp',
+      database: 'pokemons',
       port: 5432
   };
 }
 
 //this is the same
-const pool = new pg.Pool(configs);
+const db = new pg.Pool(configs);
 
 module.exports = db;
