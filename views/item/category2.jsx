@@ -23,10 +23,10 @@ class soupItemPage extends React.Component {
 			      <form className="nav navbar-header mr-auto" action='/category' method=
 			      'POST'><button class="glyphicon glyphicon-menu-left"><span style={{visibility: 'hidden'}}>**</span></button></form>
 
-			      <a className="nav navbar-header text-center animated slideInRight" style={{fontSize:'20px'}}>Soup</a>
+			      <a className="nav navbar-header text-center animated slideInRight" style={{fontSize:'20px', fontFamily:"'Mandali', sans-serif"}}>SUSHI</a>
 
 			      <form className="nav navbar-header ml-auto animated slideInRight" action="/user/cart" method='GET'><span>{this.props.user}</span><button className="glyphicon glyphicon-shopping-cart"></button></form>
-			  		<div id='itemCount' style={circleAddToCart} className='text-center'>{this.props.counter}</div>
+			  		{this.props.counter === undefined ? <div></div> : <div style={circleAddToCart} class='text-center animated slideInRight'>{this.props.counter}</div>}
 			  </div>
 			</nav>
 

@@ -15,6 +15,9 @@ function setupRoutes(app){
 	//getting the categories items
 	app.post('/category',user.categories);
 
+	//removing items
+	// app.post('/user/cart/edit',user.itemEditing);
+
 
 
 }

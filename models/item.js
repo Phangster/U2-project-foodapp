@@ -76,6 +76,30 @@ function categoryPage(callback){
 	})
 }
 
+// function deletingFromCart(item_id, callback) {
+// 	let queryString = 'DELETE FROM users_items WHERE item_id = $1'
+// 	let values = [item_id]
+// 	db.query(queryString, values, (error, result)=>{
+// 		if(error){
+// 			console.log(error.message);
+// 		}else{
+// 			callback(error, result.rows);
+// 		}
+// 	})
+// }
+
+// function addingFromCart(user_id, items_id, categories_id, callback) {
+// 	let queryString = 'INSERT INTO users_items(users_id, items_id, categories_id) VALUES($1, $2, $3) RETURNING * WHERE item_id = $1'
+// 	let values = [user_id, items_id, categories_id]
+// 	db.query(queryString, values, (error, result)=>{
+// 		if(error){
+// 			console.log(error.message);
+// 		}else{
+// 			callback(error, result.rows);
+// 		}
+		
+// 	})
+// }
 
 module.exports = {
 	viewItems,
@@ -83,4 +107,6 @@ module.exports = {
 	addToCart,
 	quantityOfItems,
 	categoryPage
+	// deletingFromCart,
+	// addingFromCart
 }

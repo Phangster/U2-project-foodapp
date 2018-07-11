@@ -1,6 +1,6 @@
-// document.querySelector('.decrease').addEventListener("click", ()=>{
-    
-// });
+document.querySelector('.minus').addEventListener("click", ()=>{
+    document.querySelector('.itemQuantity').innerText=
+});
 
 
 // $('.clear').click(function() {

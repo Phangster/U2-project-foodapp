@@ -28,9 +28,9 @@ if( process.env.DATABASE_URL ){
 
   //otherwise we are on the local network
   var configs = {
-      user: 'akira',
+      user: 'drillaxholic',
       host: '127.0.0.1',
-      database: 'pokemons',
+      database: 'foodapp',
       port: 5432
   };
 }

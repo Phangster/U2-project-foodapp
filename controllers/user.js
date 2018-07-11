@@ -62,7 +62,8 @@ function homeGet(req, res){
 			res.send('deb error2: ' + error.message);
 		}else{
 			let context = { 
-				item: itemResult
+				item: itemResult,
+				user: req.cookies['name']
 			};
 			res.render('./user/home_page', context);
 		};
@@ -101,11 +102,15 @@ function displayToCart(req, res){
 				let nameitem = item.nameitem;
 				count[nameitem] = count[nameitem] + 1 || 1
 			})
-			console.log(count)
+
+			for(let i = 0; i < result.length; i++){
+				var cost = result[i].price
+			}
 			var	items=[];
 			for(var key in count){
 				items.push({
 					name: key,
+					price: cost,
 					quantity: count[key]
 				})
 			}
@@ -122,12 +127,33 @@ function categories(req, res){
 		if (error) {
 		    res.send('deb error: ' + error.message);
 		}else{
-			res.render('./item/category_page', {category: result, user: req.cookies['name']})
+			res.render('./item/category_page', {category: result, user: req.cookies['name'], counter: req.cookies['itemsInCart']})
 		}
 	}
 	//Display all information is postgresql in catergories
 	Item.categoryPage(callback);
 }
+
+// function itemEditing(req, res){
+	
+// 	function callback(error, result){
+// 		if(error){
+// 			console.log(error.message);
+// 		}else{
+// 			let content={ 	counter: itemsInCart, 
+// 							user: req.cookies['name'], 
+// 							cat: req.params.cat, 
+// 							items: selectResult
+// 						}
+// 			res.render('./item/list_of_items', content)
+// 		}
+// 	}
+// 	if(req.body.name=='subtraction'){
+// 		Item.deletingFromCart(req.params.id, callback)
+// 	}else if (req.body.name=='addition'){
+// 		Item.addingFromCart(req.cookies['user_id'], req.params.id, req.params.cat, callback)
+// 	}	
+// }
 
 module.exports = {
 	create,
@@ -138,5 +164,6 @@ module.exports = {
 	addingToCart,
 	displayToCart,
 	categories
+	// itemEditing
 }
 

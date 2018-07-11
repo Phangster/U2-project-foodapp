@@ -6,10 +6,24 @@ const centeringTextInImage = {
     position: 'absolute',
     display: 'block',
     zIndex: '1',
-    top: '68%',
-    left: '40%',
-    color: 'black'
+    top: '50%',
+    left: '45%',
+    color: 'black',
+    fontFamily: "'Fredoka One', cursive",
+    color:'white'
 }
+const circleAddToCart = {
+		width:'15px', 
+		height:'15px', 
+		background:'red', 
+		borderRadius:'50%',
+		position:'absolute',
+		marginRight:'20%',
+		top: '18%',
+    	left: '93%',
+    	color: 'white',
+    	fontSize: '12px'
+	}
 
 class categories extends React.Component {
 	render(){
@@ -21,9 +35,10 @@ class categories extends React.Component {
 			      <form className="nav navbar-header mr-auto" action='' method=
 			      'GET'><span className="glyphicon glyphicon-menu-hamburger"><span style={{visibility: 'hidden'}}>***</span></span></form>
 
-			      <a className="nav navbar-header animated slideInRight" style={{fontSize:'20px'}}>Menu</a>
+			      <a className="nav navbar-header animated slideInRight" style={{fontSize:'20px', fontFamily:"'Nova Oval', cursive", fontSize:'30px'}}>Menu</a>
 
 			      <form className="nav navbar-header ml-auto animated slideInRight" action="/user/cart" method='GET'><span>{this.props.user}</span><button type="submit" className="glyphicon glyphicon-shopping-cart counter"></button></form>
+			      {this.props.counter === undefined ? <div></div> : <div style={circleAddToCart} class='text-center animated slideInRight'>{this.props.counter}</div>}
 			  </div>
 			</nav>
 
@@ -38,7 +53,7 @@ class categories extends React.Component {
 							<div class="col">
 								<figure className="figure">
 									<img src={cat.img} class="figure-img img-fluid rounded" style={{padding:'10px 25px 5px 25px', position:'relative'}}/>
-									<input type='submit' value={cat.categories} name='Soba' style={centeringTextInImage}/>
+									<input type='submit'  value={cat.categories} style={centeringTextInImage}/>
 								</figure>
 							</div>	
 						</form>
