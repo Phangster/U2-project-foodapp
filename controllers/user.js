@@ -18,13 +18,13 @@ function homePost(req, res){
 				if (error) {
 	    			res.send('deb error: ' + error.message);
 	    		}else{
-	    			let name = userResult.name;
+	    			// let name = userResult.name;
 					Item.viewItems((error, itemResult)=>{
 						if (error) {
 		    				res.send('deb error: ' + error.message);
 						}else{
 							let context = {
-								user: name, 
+								user: req.cookies['name'], 
 								item: itemResult
 							};
 							res.render('./user/home_page', context);
@@ -49,6 +49,7 @@ function create(req, res){
 		    let user_id = result
 		    res.cookie('logged_in', 'true');
 		    res.cookie('user_id', user_id);
+		    res.cookie('name', req.body.name);
 		    res.render('./user/login_page');
 		}
 	}
@@ -69,39 +70,67 @@ function homeGet(req, res){
 }
 function addingToCart(req, res){
 
-	function callback(error, result){
+	function callback(error, insertResult, selectResult){
 		if (error) {
 		    res.send('deb error: ' + error.message);
 		}else{
-			res.redirect('/home')
+			var itemsInCart;
+			if( req.cookies['itemsInCart'] == undefined ){
+				itemsInCart = 1;
+			}else{
+				itemsInCart = parseInt(req.cookies['itemsInCart']) + 1;
+			}
+			res.cookie('itemsInCart', itemsInCart)
+			let content = {
+							counter: itemsInCart, 
+							user: req.cookies['name'], 
+							items: selectResult 
+						}
+			res.render('./item/category' + req.params.cat, content)
 		}
 	}
-	Item.addToCart(req.cookies['user_id'], req.body.id, callback)
-}
-
-function viewCart(req, res){
-
-	function callback(error, result){
-		if (error) {
-		    res.send('deb error: ' + error.message);
-		}else{
-			res.render('./item/mylistofitem', {item : result});
-		}
-	}
-	Item.displayCart(req.cookies['id'], callback);
+	Item.addToCart(req.cookies['user_id'], req.params.id, req.params.cat, callback)
 }
 
  function displayToCart(req, res){
 
  	function callback(error, result){
- 		console.log(result)
+ 	
  		if (error) {
 		    res.send('deb error: ' + error.message);
 		}else{
-			res.render('./item/list_of_items', {item: result})
+			var count = {};
+
+			result.forEach((item)=>{
+				let nameitem = item.nameitem;
+				count[nameitem] = count[nameitem] + 1 || 1
+			})
+			console.log(count)
+			var	items=[];
+			for(var key in count){
+				items.push({
+					name: key,
+					quantity: count[key]
+				})
+			}
+
+			res.render('./item/list_of_items', {items: items, cat: req.params.cat, user: req.cookies['name']})
 		}
 	}
 	Item.displayCart(req.cookies['user_id'], callback)
+}
+
+function categories(req, res){
+
+	function callback(error, result){
+		if (error) {
+		    res.send('deb error: ' + error.message);
+		}else{
+			res.render('./item/category_page', {category: result, user: req.cookies['name']})
+		}
+	}
+	//Display all information is postgresql in catergories
+	Item.categoryPage(callback);
 }
 
 module.exports = {
@@ -110,8 +139,8 @@ module.exports = {
 	registration,
 	homePost,
 	homeGet,
-	viewCart,
 	addingToCart,
-	displayToCart
+	displayToCart,
+	categories
 }
 

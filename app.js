@@ -11,6 +11,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(methodOverride('_method'));
+app.use(express.static('public'));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jsx');
@@ -23,8 +24,8 @@ setupRoutesForTheExpressServer(app);
 const ajaxSetUp = require('./ajax_index');
 ajaxSetUp(app, db);
 
-
-const server = app.listen(3000, ()=>console.log('~~~ Tuning in to the waves of 3000 ~~~'))
+const PORT =process.env.PORT || 3000
+const server = app.listen(PORT, ()=>console.log('~~~ Tuning in to the waves '+PORT+' ~~~'))
 
 server.on('close', () => {
   console.log('Closed express server');

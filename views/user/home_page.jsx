@@ -3,33 +3,26 @@ var LayoutContainer = require('../layouts/main.jsx');
 
 class Home extends React.Component {
 	render(){
-		console.log(this.props);
 		return (
 			<LayoutContainer>
-				<h1>Home page</h1>
-				<h3>Hello and welcome back again {this.props.user} Good to have you back</h3>
-				    <form action ="/user/cart" method='GET'>
-				    	<button>View list of items in your cart</button>
-			    	</form>
-			    	<div>
-          				<ul>
-           	 				{this.props.item.map(item => (
-            				<div>
-	              				<li>
-	                  				<p>Name: {item.name}</p>
-	                  				<p>Item number: {item.num}</p>
-                    				<p>Price: ${item.price}</p>
-                    				<form 
-                    				method='POST'
-                    				action ={'/user/additem/' + item.id} >
-                    					<input name='id' type="hidden" value = {item.id}/>
-				    					<button>Add</button>
-			    					</form>
-	 				        	</li>
- 				      		</div>
-            			))}
-          				</ul>
-        			</div>
+			<nav class="navbar navbar-default navbar-fixed-top" style={{background:'#b7eba0'}}>
+			  <div class="container-fluid text-center" style={{display: 'flex', justifyContent: 'center'}}>
+			      <form class="nav navbar-header mr-auto animated slideInRight" action='' method=
+			      'GET'><button class="glyphicon glyphicon-menu-hamburger"><span style={{visibility: 'hidden'}}>**</span></button></form>
+
+			      <a class="nav navbar-header text-center animated slideInRight" style={{fontSize:'20px', position:'absolute', textAlign: 'center'}}>Menu</a>
+
+			      <form class="nav navbar-header ml-auto animated slideInRight" action="/user/cart" method='GET'><span>{this.props.user}</span><button class="glyphicon glyphicon-shopping-cart"></button></form>
+			  </div>
+			</nav>
+
+			<form
+			method='POST'
+			action={'/category'}>
+				<button style={{display: 'inlineBlock', position: 'absolute', top: '10%', right: '3%'}} type="submit" class="btn btn-secondary-sm">Skip</button>
+			</form>
+
+
 		    </LayoutContainer>
     	)
 	}
