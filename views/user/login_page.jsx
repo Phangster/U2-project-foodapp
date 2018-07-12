@@ -35,7 +35,7 @@ class Home extends React.Component {
     return (
       <LayoutContainer >
       <div style={imageSize}>
-      <img src='./img/logo.png' class="img-fluid animated bounce"/>
+      <img src='/img/logo.png' class="img-fluid animated bounce"/>
       </div>
         <div style={center}>
             <form action ="/home" method='POST' class="text-center" style={{padding: '20px'}}>

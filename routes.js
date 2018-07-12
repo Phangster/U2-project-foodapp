@@ -3,7 +3,7 @@ const food = require('./controllers/food_items');
 
 function setupRoutes(app){
 	
-	app.get('/user', user.loginInPage);
+	app.get('/', user.loginInPage);
 	app.get('/user/new', user.registration);
 	app.post('/user/new', user.create);
 	app.post('/home', user.homePost);
